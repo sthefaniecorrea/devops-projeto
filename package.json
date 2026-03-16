@@ -1,0 +1,11 @@
+{
+  "name": "devops-projeto",
+  "version": "1.0.0",
+  "description": "Projeto da disciplina DevOps na Prática com CI usando GitHub Actions e infraestrutura como código com Terraform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Teste executado com sucesso\""
+  },
+  "author": "Seu Nome",
+  "license": "MIT"
+}
