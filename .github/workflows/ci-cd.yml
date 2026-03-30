@@ -1,0 +1,34 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      - name: Setup Node (se for JS)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar testes
+        run: npm test
+
+      - name: Build da aplicação
+        run: npm run build
+
+      # 🚀 CD começa aqui
+      - name: Build Docker image
+        run: docker build -t devops-projeto .
+
+      - name: Rodar container
+        run: docker run -d -p 3000:3000 devops-projeto
